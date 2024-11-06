@@ -28,23 +28,17 @@ const Scene = () => {
   // useHelper(lightRef, THREE.PointLightHelper, 12);
 
   // ---loading of assets---
-  const sol = useLoader(THREE.TextureLoader, "./src/assets/sunmap.jpg");
-  const mercury = useLoader(THREE.TextureLoader, "./src/assets/mercurymap.jpg");
-  const venus = useLoader(THREE.TextureLoader, "./src/assets/venusmap.jpg");
-  const earth = useLoader(THREE.TextureLoader, "./src/assets/earthmap.jpg");
-  const mars = useLoader(THREE.TextureLoader, "./src/assets/marsmap.jpg");
-  const jupiter = useLoader(THREE.TextureLoader, "./src/assets/jupitermap.jpg");
-  const saturn = useLoader(THREE.TextureLoader, "./src/assets/saturnmap.jpg");
-  const saturnRings = useLoader(
-    THREE.TextureLoader,
-    "./src/assets/saturn-ring.png"
-  );
-  const uranus = useLoader(THREE.TextureLoader, "./src/assets/uranusmap.jpg");
-  const uranusRings = useLoader(
-    THREE.TextureLoader,
-    "./src/assets/uranus-ring.png"
-  );
-  const neptune = useLoader(THREE.TextureLoader, "./src/assets/neptunemap.jpg");
+  const sol = useLoader(THREE.TextureLoader, "/sunmap.jpg");
+  const mercury = useLoader(THREE.TextureLoader, "/mercurymap.jpg");
+  const venus = useLoader(THREE.TextureLoader, "./venusmap.jpg");
+  const earth = useLoader(THREE.TextureLoader, "/earthmap.jpg");
+  const mars = useLoader(THREE.TextureLoader, "/marsmap.jpg");
+  const jupiter = useLoader(THREE.TextureLoader, "/jupitermap.jpg");
+  const saturn = useLoader(THREE.TextureLoader, "/saturnmap.jpg");
+  const saturnRings = useLoader(THREE.TextureLoader, "/saturn-ring.png");
+  const uranus = useLoader(THREE.TextureLoader, "/uranusmap.jpg");
+  const uranusRings = useLoader(THREE.TextureLoader, "/uranus-ring.png");
+  const neptune = useLoader(THREE.TextureLoader, "/neptunemap.jpg");
 
   // ---3d model movements---
   useFrame(() => {
@@ -95,7 +89,7 @@ const Scene = () => {
       {/* <gridHelper args={[200, 200, "cyan"]} /> */}
       {/* <axesHelper args={[13]} /> */}
 
-      <Environment background files={"./src/assets/hiptyc_2020_4k_gal.exr"} />
+      <Environment background files={"/hiptyc_2020_4k_gal.exr"} />
 
       {/* ---sol--- */}
       <mesh ref={rotationAxisSol}>
