@@ -89,7 +89,7 @@ const Scene = () => {
       {/* <gridHelper args={[200, 200, "cyan"]} /> */}
       {/* <axesHelper args={[13]} /> */}
 
-      <Environment background files={"/hiptyc_2020_4k_gal.exr"} />
+      {/* <Environment background files={"/hiptyc_2020_4k_gal.exr"} /> */}
 
       {/* ---sol--- */}
       <mesh ref={rotationAxisSol}>

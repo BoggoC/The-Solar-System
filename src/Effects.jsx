@@ -1,5 +1,5 @@
 import { EffectComposer, GodRays } from "@react-three/postprocessing";
-import { forwardRef } from "react";
+import { forwardRef, Suspense, useEffect } from "react";
 
 const Effects = forwardRef((props, ref) => {
   return (
