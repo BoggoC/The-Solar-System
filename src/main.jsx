@@ -18,7 +18,10 @@ createRoot(document.getElementById("root")).render(
         // position: [-0.5, -0.25, 52],
       }}
     >
-      <Scene />
+      <Suspense fallback={null}>
+        <Scene />
+      </Suspense>
     </Canvas>
+    <Loader />
   </>
 );
