@@ -1,12 +1,10 @@
 import * as THREE from "three";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls, Environment, useHelper, Svg } from "@react-three/drei";
-import { Physics, RigidBody } from "@react-three/rapier";
+import { OrbitControls, Environment, useHelper } from "@react-three/drei";
 import { useRef } from "react";
 import Effects from "./Effects";
 
 const Scene = () => {
-  const sunShine = useRef();
   const rotationAxisSol = useRef();
   const rotationAxisMercury = useRef();
   const rotationAxisVenus = useRef();
@@ -66,10 +64,7 @@ const Scene = () => {
 
   return (
     <>
-      {/* <Physics> */}
       <OrbitControls />
-
-      <Effects ref={sunShine} />
 
       <pointLight
         position={[0, 0, 0]}
@@ -78,10 +73,10 @@ const Scene = () => {
         ref={lightRef}
         // shadow-mapSize-height={1024}
         // shadow-mapSize-width={1024}
-        // shadow-mapSize-height={2048}
-        // shadow-mapSize-width={2048}
-        shadow-mapSize-height={4096}
-        shadow-mapSize-width={4096}
+        shadow-mapSize-height={2048}
+        shadow-mapSize-width={2048}
+        // shadow-mapSize-height={4096}
+        // shadow-mapSize-width={4096}
         castShadow
       />
 
@@ -89,15 +84,14 @@ const Scene = () => {
       {/* <gridHelper args={[200, 200, "cyan"]} /> */}
       {/* <axesHelper args={[13]} /> */}
 
-      {/* <Environment background files={"/hiptyc_2020_4k_gal.exr"} /> */}
       <Environment background files={"/hiptyc_2020_4k_gal.jpg"} />
 
       {/* ---sol--- */}
+      <Effects />
+
       <mesh ref={rotationAxisSol}>
-        <mesh ref={sunShine}>
-          <sphereGeometry args={[10, 64, 64]} />
-          <meshBasicMaterial map={sol} color="orange" />
-        </mesh>
+        <sphereGeometry args={[9.9, 64, 64]} />
+        <meshBasicMaterial map={sol} color="orange" />
       </mesh>
 
       {/* ---Mercury--- */}
@@ -150,7 +144,7 @@ const Scene = () => {
 
       {/* ---Jupiter--- */}
 
-      <mesh ref={jupiterOrbit}>
+      <mesh ref={jupiterOrbit} rotation-y={Math.PI / 2}>
         <mesh
           ref={rotationAxisJupiter}
           position-z={28.25}
@@ -209,7 +203,8 @@ const Scene = () => {
       </mesh>
 
       {/* ---Neptune--- */}
-      <mesh ref={neptuneOrbit} rotation-y={Math.PI / 1.5}>
+      {/* <mesh ref={neptuneOrbit} rotation-y={Math.PI / 1.5}> */}
+      <mesh ref={neptuneOrbit}>
         <mesh
           ref={rotationAxisNeptune}
           position-z={54.75}

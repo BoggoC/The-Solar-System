@@ -1,14 +1,22 @@
 import { EffectComposer, GodRays } from "@react-three/postprocessing";
-import { forwardRef, Suspense, useEffect } from "react";
+import * as THREE from "three";
+import { Mesh, MeshBasicMaterial } from "three";
 
-const Effects = forwardRef((props, ref) => {
+let mesh = new Mesh(
+  new THREE.SphereGeometry(10, 64, 64),
+  new MeshBasicMaterial({
+    color: "orange",
+    transparent: true,
+    opacity: 1,
+  })
+);
+
+const Effects = () => {
   return (
     <EffectComposer>
-      {ref.current && (
-        <GodRays sun={ref.current} samples={60} density={0.96} blur={true} />
-      )}
+      <GodRays sun={mesh} />
     </EffectComposer>
   );
-});
+};
 
 export default Effects;
