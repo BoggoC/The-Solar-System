@@ -64,7 +64,12 @@ const Scene = () => {
 
   return (
     <>
-      <OrbitControls minDistance={20} maxDistance={60} />
+      <OrbitControls
+        minDistance={20}
+        maxDistance={60}
+        enableDamping={true}
+        dampingFactor={0.1}
+      />
       <pointLight
         position={[0, 0, 0]}
         intensity={3000}
