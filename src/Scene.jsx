@@ -38,7 +38,7 @@ const Scene = () => {
   const uranusRings = useLoader(THREE.TextureLoader, "/uranus-ring.png");
   const neptune = useLoader(THREE.TextureLoader, "/neptunemap.jpg");
 
-  // ---3d model movements---
+  // ---object movements---
   useFrame(() => {
     // ---rotation on axis---
     rotationAxisSol.current.rotation.y += 0.05;
@@ -64,21 +64,19 @@ const Scene = () => {
 
   return (
     <>
-      <OrbitControls />
-
+      <OrbitControls minDistance={20} maxDistance={60} />
       <pointLight
         position={[0, 0, 0]}
         intensity={3000}
         color="#fff"
         ref={lightRef}
-        // shadow-mapSize-height={1024}
-        // shadow-mapSize-width={1024}
         shadow-mapSize-height={2048}
         shadow-mapSize-width={2048}
-        // shadow-mapSize-height={4096}
-        // shadow-mapSize-width={4096}
+        shadow-bias={-0.0005} // fixed issue with artefacts on saturn and uranus rings
         castShadow
       />
+
+      {/* ---helpers--- */}
 
       {/* <ambientLight /> */}
       {/* <gridHelper args={[200, 200, "cyan"]} /> */}
@@ -88,12 +86,10 @@ const Scene = () => {
 
       {/* ---sol--- */}
       <Effects />
-
       <mesh ref={rotationAxisSol}>
         <sphereGeometry args={[9.9, 64, 64]} />
         <meshBasicMaterial map={sol} color="orange" />
       </mesh>
-
       {/* ---Mercury--- */}
       <mesh ref={mercuryOrbit} rotation-y={Math.PI / 2}>
         <mesh ref={rotationAxisMercury} position-z={12} castShadow>
@@ -101,7 +97,6 @@ const Scene = () => {
           <meshStandardMaterial map={mercury} />
         </mesh>
       </mesh>
-
       {/* ---Venus--- */}
       <mesh ref={venusOrbit} rotation-y={Math.PI / -3}>
         <mesh
@@ -114,7 +109,6 @@ const Scene = () => {
           <meshStandardMaterial map={venus} />
         </mesh>
       </mesh>
-
       {/* ---Earth--- */}
       <mesh ref={earthOrbit} rotation-y={Math.PI / 1.25}>
         <mesh
@@ -128,7 +122,6 @@ const Scene = () => {
           <meshStandardMaterial map={earth} />
         </mesh>
       </mesh>
-
       {/* ---Mars--- */}
       <mesh ref={marsOrbit} rotation-y={Math.PI / 1.5}>
         <mesh
@@ -141,9 +134,7 @@ const Scene = () => {
           <meshStandardMaterial map={mars} />
         </mesh>
       </mesh>
-
       {/* ---Jupiter--- */}
-
       <mesh ref={jupiterOrbit} rotation-y={Math.PI / 2}>
         <mesh
           ref={rotationAxisJupiter}
@@ -156,7 +147,6 @@ const Scene = () => {
           <meshStandardMaterial map={jupiter} />
         </mesh>
       </mesh>
-
       {/* ---Saturn--- */}
       <mesh ref={saturnOrbit} rotation-y={Math.PI / -1.125}>
         <mesh
@@ -179,7 +169,6 @@ const Scene = () => {
           </mesh>
         </mesh>
       </mesh>
-
       {/* ---Uranus--- */}
       <mesh ref={uranusOrbit} rotation-y={Math.PI / -1.25}>
         <mesh
@@ -201,9 +190,7 @@ const Scene = () => {
           </mesh>
         </mesh>
       </mesh>
-
       {/* ---Neptune--- */}
-      {/* <mesh ref={neptuneOrbit} rotation-y={Math.PI / 1.5}> */}
       <mesh ref={neptuneOrbit}>
         <mesh
           ref={rotationAxisNeptune}

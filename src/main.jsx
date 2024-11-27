@@ -11,8 +11,8 @@ createRoot(document.getElementById("root")).render(
       shadows
       camera={{
         fov: 45,
-        near: 0.1,
-        far: 100,
+        near: 0.01,
+        far: 2000,
         // position: [1, 1, 40],
         // -behind Jupiter-
         // position: [0, 1, 37],
